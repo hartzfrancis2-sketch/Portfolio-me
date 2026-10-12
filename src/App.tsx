@@ -1,17 +1,17 @@
+import Navbar from './component/Navbar';
+import Hero from './component/Hero';
+import About from './component/About';
+import Skills from './component/Skills';
+
 function App() {
   return (
-    <div className="min-h-screen bg-slate-950 text-white flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-5xl font-bold mb-4">
-          Francis Chibueze
-        </h1>
-
-        <p className="text-xl text-gray-400">
-          Full Stack Software Developer
-        </p>
-      </div>
-    </div>
-  )
+    <main className="min-h-screen bg-[#080d19]">
+      <Navbar />
+      <Hero />
+      <About />
+      <Skills />
+    </main>
+  );
 }
 
-export default App
+export default App;
