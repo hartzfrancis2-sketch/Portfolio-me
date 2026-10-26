@@ -37,7 +37,7 @@ const Navbar = () => {
 
         <div className="hidden items-center gap-4 md:flex">
           <a
-            href="https://github.com/"
+            href="https://github.com/hartzfrancis2-sketch"
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
@@ -47,7 +47,7 @@ const Navbar = () => {
           </a>
 
           <a
-            href="https://github.com/hartzfrancis2-sketch"
+            href="https://linkedin.com/in/chibueze-francis-99b9b3404"
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"

@@ -45,7 +45,7 @@ function Experience() {
                 </h3>
 
                 <p className="mt-2 text-lg font-medium text-emerald-400">
-                  MetroBlue Tech Systems Ltd.
+                  MetroBlue IT Solution Ltd.
                 </p>
 
                 <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-400">

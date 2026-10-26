@@ -14,26 +14,62 @@ function Contact() {
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState('');
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const recipient = 'your-email@example.com'; // Replace with your email
-    const emailSubject = encodeURIComponent(subject);
-    const emailBody = encodeURIComponent(
-      `Hello Francis,\n\n${message}\n\nFrom: ${name}\nReply email: ${email}`
-    );
+    if (isSubmitting) return;
 
-    window.location.href =
-      `mailto:${recipient}?subject=${emailSubject}&body=${emailBody}`;
+    setIsSubmitting(true);
+    setStatus('');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '77e2bfb9-c38d-4b64-b184-976dd1fed268',
+          name,
+          email,
+          subject,
+          message,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setStatus('Message sent successfully! Thank you for contacting me.');
+        setName('');
+        setEmail('');
+        setSubject('');
+        setMessage('');
+      } else {
+        setStatus(
+          result.message ||
+            'Sorry, your message could not be sent. Please try again.'
+        );
+      }
+    } catch {
+      setStatus(
+        'Unable to send your message. Please check your internet connection and try again.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactDetails = [
     {
       icon: FiMail,
       label: 'Email',
-      value: 'your-email@example.com',
-      href: 'mailto:your-email@example.com',
+      value: 'hartzfrancis2@gmail.com',
+      href: 'mailto:hartzfrancis2@gmail.com',
     },
     {
       icon: FiPhone,
@@ -130,7 +166,7 @@ function Contact() {
 
               <div className="flex gap-3">
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/hartzfrancis2-sketch"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="GitHub profile"
@@ -140,7 +176,7 @@ function Contact() {
                 </a>
 
                 <a
-                  href="https://linkedin.com/in/yourusername"
+                  href="https://linkedin.com/in/chibueze-francis-99b9b3404"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="LinkedIn profile"
@@ -160,7 +196,7 @@ function Contact() {
             <h3 className="text-xl font-semibold">Send me a message</h3>
 
             <p className="mt-2 text-sm leading-6 text-gray-400">
-              Fill in the form below to prepare a message in your email app.
+              Fill in the form below to send me a message directly.
             </p>
 
             <div className="mt-7 grid gap-5 sm:grid-cols-2">
@@ -243,15 +279,22 @@ function Contact() {
 
             <button
               type="submit"
+              disabled={isSubmitting}
               className="mt-6 inline-flex w-full items-center justify-center gap-3 rounded-lg bg-emerald-400 px-6 py-3.5 font-semibold text-gray-950 transition hover:-translate-y-0.5 hover:bg-emerald-300"
             >
-              Send Message <FiSend size={18} />
+              {isSubmitting ? 'Sending Message...' : 'Send Message'}{' '}
+              <FiSend size={18} />
             </button>
 
-            <p className="mt-4 text-center text-xs leading-5 text-gray-500">
-              This form opens your email application; it does not send
-              messages directly from the website.
-            </p>
+            {status && (
+              <p
+                role="status"
+                aria-live="polite"
+                className="mt-4 text-center text-xs leading-5 text-gray-400"
+              >
+                {status}
+              </p>
+            )}
           </form>
         </div>
       </div>

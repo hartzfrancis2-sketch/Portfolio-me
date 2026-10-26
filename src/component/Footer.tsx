@@ -42,7 +42,7 @@ function Footer() {
 
             <div className="mt-6 flex gap-3">
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/hartzfrancis2-sketch"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub profile"
@@ -52,7 +52,7 @@ function Footer() {
               </a>
 
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://linkedin.com/in/chibueze-francis-99b9b3404"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn profile"
