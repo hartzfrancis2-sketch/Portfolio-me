@@ -8,16 +8,19 @@ const Navbar = () => {
   const links = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Experience', href: '#experience' },
     { name: 'Contact', href: '#contact' },
+   
   ];
 
   return (
     <nav className="fixed top-0 z-50 w-full border-b border-white/10 bg-[#080d19]/90 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-        <a href="#home" className="text-xl font-bold tracking-tight text-white">
-          Francis<span className="text-emerald-400">.</span>
+        <a href="#home" className="text-xl font-bold tracking-tight text-white flex">
+          <img src="public/myname.jpeg" alt="My Name" className="h-15 w-15 rounded-full border-2 border-emerald-400" />
+        <span className="text-emerald-400"></span>
         </a>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -44,7 +47,7 @@ const Navbar = () => {
           </a>
 
           <a
-            href="https://linkedin.com/"
+            href="https://github.com/hartzfrancis2-sketch"
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"
